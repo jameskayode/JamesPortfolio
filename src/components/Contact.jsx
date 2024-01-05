@@ -15,12 +15,12 @@ const Contact = () => {
       <div className="flex flex-col justify-center items-center w-full h-full text-white">
         {/* Heading */}
         <p className="text-4xl font-bold inline border-b-4 border-[#00FFCA]">
-          Contact
+          Contact Me
         </p>
         {/* Description */}
         <p className="py-6">
           Submit the form below or send me an email -{" "}
-          <span className="font-bold">mahdilaith380@gmail.com</span>
+          <span className="font-bold">jameskayode39@gmail.com</span>
         </p>
 
         {/* Form */}

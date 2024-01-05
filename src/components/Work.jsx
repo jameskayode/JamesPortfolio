@@ -7,13 +7,13 @@ const Work = () => {
   useEffect(() => {
     AOS.init();
   }, []);
-  
+
   return (
     <div name="work" className="w-full bg-gradient-to-l from-[#21073C] to-[#3A1078] py-32">
       <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center  h-full text-white">
         <div>
           <h1 className="text-4xl font-bold inline border-b-4 border-[#00FFCA]">Recent Works</h1>
-          <p className="text-xl py-6">During my experience as a self-taught developer, I have created many projects and shared them on LinkedIn and GitHub. I am always on the lookout for new and challenging projects to work on.</p>
+          <p className="text-xl py-6">During my experience as a self-taught developer and mentorship programmes, I have created many projects and shared them on LinkedIn and GitHub. I am always on the lookout for new and challenging projects to work on.</p>
         </div>
         <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4 mt-7">
           {/* Map over the works array and render each work */}
@@ -25,12 +25,14 @@ const Work = () => {
               className="bg-slate-200 rounded-lg overflow-hidden"
               key={work.title} data-aos="fade-up" data-aos-duration={work.duration} data-aos-easing="linear"
             >
+
               {/* Work image */}
               <img
-                src={work.imgUrl}
-                alt="work"
+                src={work.imgSrc} // Update the image source
+                alt="App Screenshot"
                 className="w-full h-36 md:h-48 object-cover"
               />
+
               {/* Work details */}
               <div className="w-full p-5 text-black">
                 <h3 className="text-lg md:text-xl mb-2 md:mb-3 font-semibold">

@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../assets/logo.png";
-import { FaTimes, FaGithub, FaLinkedin, FaBehance } from "react-icons/fa";
-import { BsGridFill } from "react-icons/bs";
+import { FaTimes, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { BsGridFill, BsPhoneFlip } from "react-icons/bs";
 import { HiArrowSmUp, HiMail } from "react-icons/hi";
+
 import { Link } from "react-scroll";
+import FloatingSocial from "./FloatingSocial";
 
 const Navbar = () => {
+
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
+
   // State variables
   const [nav, setNav] = useState(false); // Controls the visibility of the mobile menu
   const [backToTop, setBackToTop] = useState(false); // Controls the visibility of the scroll-to-top button
@@ -54,7 +74,7 @@ const Navbar = () => {
   return (
     <div className={!showShadowNav ? 'fixed w-full h-[80px] flex justify-between items-center px-4 bg-gradient-to-l from-[#21073C] to-[#3A1078] text-gray-300 z-20':'fixed w-full h-[80px] flex justify-between items-center px-4 bg-gradient-to-l from-[#21073C] to-[#3A1078] text-gray-300 z-20 shadow-2xl'}>
       <div>
-        <img src={Logo} alt="logo" style={{ width: "35px" }} />
+        <img src={Logo} alt="logo" style={{ width: "150px" }} />
       </div>
 
       {/* menu */}
@@ -76,7 +96,7 @@ const Navbar = () => {
           <Link to='work' smooth={true} duration={500}>Work</Link>
         </li>
         <li className="hover:text-[#00FFCA] hover:translate-y-1 hover:duration-200 active:text-[#00FFCA]">
-          <Link to='contact' smooth={true} duration={500}>Contact</Link>
+          <Link to='contact' smooth={true} duration={500}>Hire Me</Link>
         </li>
       </ul>
 
@@ -93,7 +113,7 @@ const Navbar = () => {
       }>
         {/* Added comments for mobile menu */}
         <div>
-          <img src={Logo} alt="logo" style={{ width: "45px" }} className="mb-7" />
+          <img src={Logo} alt="logo" style={{ width: "70px" }} className="mb-7" />
         </div>
         <ul
           className='w-full  flex flex-col justify-center items-center'
@@ -119,7 +139,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="mt-10">
-          <p>Copyright all rights reserved © 2023</p>
+          <p>James Portofolio- ©2023</p>
         </div>
       </div>
 
@@ -131,12 +151,16 @@ const Navbar = () => {
         </div>
       )}
 
+
+
       {/* Social icons */}
+      {!isMobile && <FloatingSocial/>}
       <div className="hidden lg:flex fixed flex-col top-[35%] left-0">
+        
         <ul>
           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-slate-200 rounded-e-2xl font-semibold">
             <a
-              href="https://www.linkedin.com/in/laith-mahdi-06458523a/"
+              href="https://www.linkedin.com/in/jameskayode"
               className="flex justify-between items-center w-full text-[#3A1078]"
             >
               Linkedin <FaLinkedin size={30} />
@@ -145,32 +169,41 @@ const Navbar = () => {
 
           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-slate-200 rounded-e-2xl font-semibold">
             <a
-              href="https://github.com/LaithMahdi"
+              href="https://github.com/jameskayode"
               className="flex justify-between items-center w-full text-[#3A1078]"
             >
               Github <FaGithub size={30} />
             </a>
           </li>
 
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-slate-200 rounded-e-2xl font-semibold">
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-slate-200 rounded-e-2xl font-400">
             <a
-              href="https://www.behance.net/Laith-Mahdi"
+              href="https://wa.link/5dygpl"
               className="flex justify-between items-center w-full text-[#3A1078]"
             >
-              Behance <FaBehance size={30} />
+              WhatsApp <FaWhatsapp size={30}/>
             </a>
           </li>
 
           <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-slate-200 rounded-e-2xl font-semibold">
             <a
-              href="mailto:mahdilaith380@gmail.com" 
+              href="mailto:jameskayode39@gmail.com" 
               className="flex justify-between items-center w-full text-[#3A1078]"
             >
               Email <HiMail size={30} />
             </a>
           </li>
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-slate-200 rounded-e-2xl font-semibold">
+            <a
+              href="tel:+2347067810860" 
+              className="flex justify-between items-center w-full text-[#3A1078]"
+            >
+              Phone <BsPhoneFlip size={30} />
+            </a>
+          </li>
         </ul>
-      </div>
+        </div>
+      
     </div>
   );
 };
